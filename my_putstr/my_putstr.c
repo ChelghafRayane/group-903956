@@ -1,6 +1,8 @@
-void	my_putchar();
+#include <unistd.h>
 
-void	my_putstr(char const *str)
+void my_putchar(char c);
+
+void my_putstr(char const *str)
 {
 	int numero_carac;
 	numero_carac = 0;
@@ -10,4 +12,3 @@ void	my_putstr(char const *str)
 	}
 	return ;
 }
-
