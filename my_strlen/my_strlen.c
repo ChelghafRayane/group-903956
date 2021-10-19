@@ -1,4 +1,8 @@
-int	my_strlen(char *str)
+#include <unistd.h>
+
+void my_putchar(char c);
+
+void	my_strlen(char *str)
 {
   int	i;
 
@@ -7,5 +11,5 @@ int	my_strlen(char *str)
     {
       i = i + 1;
     }
-  return (i);
+  return;
 }
