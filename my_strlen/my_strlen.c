@@ -11,5 +11,5 @@ void	my_strlen(char *str)
     {
       i = i + 1;
     }
-  return;
+  return(i);
 }
