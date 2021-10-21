@@ -1,0 +1,22 @@
+#include <unistd.h>
+
+void my_putchar(char c);
+
+int  my_revstr(char *p1, char *p2)
+{
+	char tmp = *p1;
+	*p2 = *p1;
+	*p1 = tmp;
+}
+
+char *my_revstr(char *str)
+{
+	int len = my_strlen(str);
+	int i = 0;
+	while (i < len / 2) {
+		my_revstr_swap(&str[i], &str[len - 1 - i]);
+		i++;
+	}
+	str[len] = '\0';
+	return (str);
+}
