@@ -1,0 +1,21 @@
+#include <unistd.h>
+
+void my_putchar(char c);
+
+int my_getnbr(char *str);
+{
+	int i = 0;
+	int minus_count = 0;
+{
+	while (str[i] == '-' || str[i] == '+') {
+		if (str[i] == '-')
+			minus_count++;
+		i++;
+	}
+	if ((minus_count % 2) != 0)
+		return ('-');
+	else
+	  
+		return ('+');
+}
+}
