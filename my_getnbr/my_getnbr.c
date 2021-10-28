@@ -1,34 +1,21 @@
-#include <unistd.h>
-
-int check_overflow(int nb, int stock, int sign)
+int    my_getnbr(char const *str)
 {
-    if (sign > 0 && nb < stock)
-        return (-1);
-    if (sign < 0 && nb > stock)
-        return (-1);
-    return (0);
-}
+    long number = 0;
+    int is_neg = 1;
 
-int my_getnbr(const char  *str)
-{
-    int i = 0;
-    int nb = 0;
-    int sign = 1;
-    int stock = nb;
-
-    for (; str[i] == '-' || str[i] == '+'; i++)
-        if (str[i] == '-')
-            sign = -sign;
-    for (; str[i] >= '0' && str[i] <= '9'; i++) {
-        if (nb >= 0)
-            nb = nb * 10 + str[i] - 48;
-        if (nb < 0)
-            nb = nb * 10 - (str[i] - 48);
-        if (sign < 0 && nb > 0)
-            nb = nb * sign;
-        if (check_overflow(nb, stock, sign) == -1)
+    for (int i = 0; str[i] != '\0'; i++) {
+        if (str[i] == 45)
+            is_neg = is_neg * (-1);
+        else if ((str[i] >= 48 && str[i] <= 57) &&
+        (str[i + 1] < 48 || str[i + 1] > 57)) {
+            number = number * 10 + (str[i] - 48);
+            return (number * is_neg);
+        } else if (str[i] >= 48 && str[i] <= 57)
+            number = number * 10 + (str[i] - 48);
+        number = number * is_neg;
+        if (number < -2147483648 || number > 2147483647)
             return (0);
-        stock = nb;
+        number = number * is_neg;
     }
-    return (nb);
+    return (number * is_neg);
 }
