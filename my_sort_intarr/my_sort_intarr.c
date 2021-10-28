@@ -1,28 +1,21 @@
 #include <unistd.h>
 #include <stdio.h>
 
-void my_swap(int *a, int *b)
+void    my_sort_intarr(int *array, int size)
 {
-    int c = *a;
-    *a = *b;
-    *b = c;
-}
+    int i = 0;
+    int int_temp;
 
-void my_sort_intarr(int *array, int size)
-{
-    int finish = 0;
-    for (int i = 0; i < size; i++)
-    {
-        finish = 1;
-        for (int j = 0; j < size - 1 - i; j++)
-        {
-            if (array[j] > array[j + 1])
-            {
-                my_swap(&array[j], &array[j + 1]);
-                finish = 0;
-            }
+    while (i < size - 1) {
+        if (array[i + 1] < array[i]) {
+            int_temp = array[i];
+            array[i] = array[i + 1];
+            array[i + 1] = int_temp;
+            i = 0;
         }
-        if (finish)
-            break;
+        else {
+            i = i + 1;
+        }
     }
 }
+		  
